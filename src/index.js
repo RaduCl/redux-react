@@ -23,6 +23,7 @@ class App extends Component {
 
   videoSearch(term) {
       YTsearch({key: API_KEY, term: term}, (videos) => {
+        console.log(term)
       //this.setState({videos}) === this.setState({videos: videos})
       this.setState({
         videos: videos,
@@ -32,6 +33,7 @@ class App extends Component {
   }
 
   render(){
+    //throtle updates from the search bar to once 1/2 sec
     const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 500)
 
     return(
